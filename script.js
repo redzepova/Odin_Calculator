@@ -35,9 +35,19 @@ for (let i = 0; i < numberButtons.length; i++) {
 for (let i = 0; i < operatorButtons.length; i++) {
     operatorButtons[i].addEventListener('click', () => {
         operator = operatorButtons[i].textContent;
-        console.log(operator);
+        if (operatorSelected === false) {
+            runningTotal = parseFloat(inputNumber);
+            inputNumber = "";
+            operatorSelected = true;
+            console.log(runningTotal);
+        } else {
+            console.log(runningTotal)
+        }
     });
 };
+
+//calculations. Do once operatorSelected is True//
+
 
 //create a concatenated string each time number button is pressed//
 const createInput = ((a,b) => a = a + b);
@@ -58,9 +68,6 @@ const operate = function(operator, a, b) {
     } else {
         return 'error';
     };
-
-console.log(number);
-
 };
 
 
