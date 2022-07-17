@@ -2,10 +2,9 @@ const addition = ((a, b) => a + b);
 const subtraction = ((a, b) => a - b);
 const multiply = ((a, b) => a * b);
 const division = ((a, b) => a/b);
-let operatorSelected = true;
-let firstNumber = '';
-let secondNumber = '';
-let result = 0;
+let operatorSelected = false;
+let tempNumber = ""
+let runningTotal = 0
 const numberButtons = document.querySelectorAll('.number-button');
 const operatorButtons = document.querySelectorAll('.operator-button');
 
@@ -13,10 +12,8 @@ const operatorButtons = document.querySelectorAll('.operator-button');
 function addEvents (nodeList) {
     for (let i = 0; i < nodeList.length; i++) {
         nodeList[i].addEventListener('click', () => {
-            let tempNumber = nodeList[i].textContent;
-            !operatorSelected ? firstNumber = createInput(firstNumber, tempNumber) : secondNumber = createInput(secondNumber, tempNumber);
-            console.log(firstNumber);
-            console.log(secondNumber);
+            tempNumber = createInput(tempNumber, nodeList[i].textContent)
+            console.log(tempNumber);
         });
 
     };
