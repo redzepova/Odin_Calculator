@@ -9,7 +9,12 @@ let result = 0;
 const numberButtons = document.querySelectorAll('.number-button');
 const operatorButtons = document.querySelectorAll('.operator-button');
 
-//this function adds an event listener to any node list passed to it//
+/*This function adds an event listener to any node list passed to it. If the class is operator, then the 
+computer should toggle operatorSelected. If not, computer should create the input number as string by 
+concatenating the values of numbers pressed.
+
+Problems: if user selects another operator, it won't work I don't think. This can only take two numbers*/
+
 function addEvents (nodeList) {
     for (let i = 0; i < nodeList.length; i++) {
         nodeList[i].addEventListener('click', () => {
