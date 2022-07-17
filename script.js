@@ -3,26 +3,41 @@ const subtraction = ((a, b) => a - b);
 const multiply = ((a, b) => a * b);
 const division = ((a, b) => a/b);
 let operatorSelected = false;
-let tempNumber = ""
+let operator = ""
+let inputNumber = ""
 let runningTotal = 0
 const numberButtons = document.querySelectorAll('.number-button');
 const operatorButtons = document.querySelectorAll('.operator-button');
 
-//this function adds an event listener to any node list passed to it//
+/*
 function addEvents (nodeList) {
     for (let i = 0; i < nodeList.length; i++) {
         nodeList[i].addEventListener('click', () => {
-            tempNumber = createInput(tempNumber, nodeList[i].textContent)
+            inputNumber = createInput(tempNumber, nodeList[i].textContent)
             console.log(tempNumber);
         });
-
     };
 };
 
-//add event listeners to various buttons via nodelist//
-addEvents(numberButtons);
+*/
+//When a number buttons is pressed, concate a string with the text values of each number button.
+//ex: press 1, press 8, press ., press 9 = '18.9'
 
-addEvents(operatorButtons);
+for (let i = 0; i < numberButtons.length; i++) {
+    numberButtons[i].addEventListener('click', () => {
+        inputNumber = createInput(inputNumber, numberButtons[i].textContent);
+        console.log(inputNumber);
+    });
+};
+
+//addEvents(operatorButtons);
+
+for (let i = 0; i < operatorButtons.length; i++) {
+    operatorButtons[i].addEventListener('click', () => {
+        operator = operatorButtons[i].textContent;
+        console.log(operator);
+    });
+};
 
 //create a concatenated string each time number button is pressed//
 const createInput = ((a,b) => a = a + b);
