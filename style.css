@@ -84,9 +84,11 @@ button{
 
     #calculator {
         height: fit-content;
+        width: fit-content;
     }
 
     #display {
-        height: 15%;
+        height: fit-content;
+        width: fit-content;
     }
   }
