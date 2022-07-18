@@ -76,3 +76,17 @@ button{
     font-family: 'Share Tech Mono', monospace;
     font-size: 300%
 }
+
+@media screen and (min-width: 481px) {
+    #numberpad {
+        height: fit-content;
+    }
+
+    #calculator {
+        height: fit-content;
+    }
+
+    #display {
+        height: 15%;
+    }
+  }
