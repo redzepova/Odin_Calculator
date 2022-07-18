@@ -71,13 +71,13 @@ const createInput = ((a,b) => a = a + b);
 //operator functions//
 const operate = function(operator, a, b) {
     if (operator === '+') {
-        return addition(a, b);
+        return addition(a, b).toFixed(4);
     } else if (operator === '-') {
-        return subtraction(a, b);
+        return subtraction(a, b).toFixed(4);
     } else if (operator === 'x') {
-        return multiply(a, b);
+        return multiply(a, b).toFixed(4);
     } else if (operator === '%') {
-        return division(a, b);
+        return division(a, b).toFixed(4);
     } else {
         return a;
     };
