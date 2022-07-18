@@ -1,3 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Share+Tech+Mono&display=swap');
+
+
+body {
+    font-family: 'Lobster', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#numberpad-numbers{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 66%;
+    margin: 8px;
+    gap: 7px;
+}
+
+#numberpad {
+    display: flex;
+    width: 100%;
+    min-height: 66%;
+    background-color: #333533;
+    justify-content: space-between;
+    font-family: 'Lobster', cursive;
+
+}
+
+#numberpad-operators{
+    display: grid;
+    gap: 3px;
+    margin: 8px;
+}
+
+header {
+    background-color: #242423;
+    color: #f5cb5c;
+    font-size: 130%;
+    padding: 3px;
+    padding-left: 6px;
+}
+
+button{
+    font-family: 'Lobster', cursive;
+    background-color: #f5cb5c;
+
+
+}
+
 .number-button{
-    
+    background-color: #ece2d0;
+
+}
+
+.operator-button{
+    font-family: 'Lobster', cursive;
+  
+}
+
+#calculator {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 25vw;
+    width: 25vw;
+
+}
+
+#display{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 25%;
+    background-color: #cfdbd5;
+    color: #242423;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 300%
 }

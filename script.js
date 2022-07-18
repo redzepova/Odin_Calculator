@@ -8,6 +8,12 @@ let inputNumber = ""
 let runningTotal = 0
 const numberButtons = document.querySelectorAll('.number-button');
 const operatorButtons = document.querySelectorAll('.operator-button');
+const outputScreen = document.getElementById('output');
+
+const clear = function () {
+    operatorSelected = false;
+    inputNumber = "";
+};
 
 //When a number buttons is pressed, concate a string with the text values of each number button.
 //ex: press 1, press 8, press ., press 9 = '18.9'
@@ -15,9 +21,19 @@ const operatorButtons = document.querySelectorAll('.operator-button');
 for (let i = 0; i < numberButtons.length; i++) {
     numberButtons[i].addEventListener('click', () => {
         inputNumber = createInput(inputNumber, numberButtons[i].textContent);
-        console.log(`user input ${inputNumber}`);
+        outputScreen.textContent = `${inputNumber}`;
     });
 };
+
+document.getElementById('button-clear').addEventListener('click', () => {
+    inputNumber = inputNumber.slice(0, inputNumber.length-1);
+    outputScreen.textContent = `${inputNumber}`;
+});
+
+document.getElementById('button-clear-all').addEventListener('click', () => {
+    clear();
+    outputScreen.textContent = ``;
+});
 
 //addEvents(operatorButtons);
 
@@ -27,19 +43,24 @@ for (let i = 0; i < operatorButtons.length; i++) {
             operator = operatorButtons[i].textContent;
             runningTotal = parseFloat(inputNumber);
             operatorSelected = true;
-            console.log(`runningTotal is ${runningTotal}`);
+            outputScreen.textContent = `${runningTotal} ${operator}`;
             inputNumber = "";
         } else {
             let temp = parseFloat(inputNumber)
-            let newTotal = operate(operator, runningTotal, temp);
-            runningTotal = newTotal;
-            inputNumber = '';
-            operator = operatorButtons[i].textContent;
+            if (operator === '%' && temp === 0) {
+                outputScreen.textContent = `Surprise! Can't divide by 0! Try again.`;
+                clear();
+            } else {
+                let newTotal = operate(operator, runningTotal, temp);
+                runningTotal = newTotal;
+                inputNumber = '';
+                operator = operatorButtons[i].textContent;
+                outputScreen.textContent = `${runningTotal} ${operator}`;
+            };
         };
-        console.log(`user selected ${operator}`);
-        console.log(`running total is ${runningTotal}`);
         if (operator === '=') {
-            operatorSelected = false;
+            clear();
+            outputScreen.textContent = `${runningTotal}`;
         };
     });
 };
@@ -56,10 +77,12 @@ const operate = function(operator, a, b) {
     } else if (operator === 'x') {
         return multiply(a, b);
     } else if (operator === '%') {
-        return division(a,b);
+        return division(a, b);
     } else {
         return a;
     };
 };
+
+
 
 
