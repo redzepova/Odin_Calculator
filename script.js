@@ -9,24 +9,13 @@ let runningTotal = 0
 const numberButtons = document.querySelectorAll('.number-button');
 const operatorButtons = document.querySelectorAll('.operator-button');
 
-/*
-function addEvents (nodeList) {
-    for (let i = 0; i < nodeList.length; i++) {
-        nodeList[i].addEventListener('click', () => {
-            inputNumber = createInput(tempNumber, nodeList[i].textContent)
-            console.log(tempNumber);
-        });
-    };
-};
-
-*/
 //When a number buttons is pressed, concate a string with the text values of each number button.
 //ex: press 1, press 8, press ., press 9 = '18.9'
 
 for (let i = 0; i < numberButtons.length; i++) {
     numberButtons[i].addEventListener('click', () => {
         inputNumber = createInput(inputNumber, numberButtons[i].textContent);
-        console.log(inputNumber);
+        console.log(`user input ${inputNumber}`);
     });
 };
 
@@ -34,39 +23,42 @@ for (let i = 0; i < numberButtons.length; i++) {
 
 for (let i = 0; i < operatorButtons.length; i++) {
     operatorButtons[i].addEventListener('click', () => {
-        operator = operatorButtons[i].textContent;
         if (operatorSelected === false) {
+            operator = operatorButtons[i].textContent;
             runningTotal = parseFloat(inputNumber);
-            inputNumber = "";
             operatorSelected = true;
-            console.log(runningTotal);
+            console.log(`runningTotal is ${runningTotal}`);
+            inputNumber = "";
         } else {
-            console.log(runningTotal)
-        }
+            let temp = parseFloat(inputNumber)
+            let newTotal = operate(operator, runningTotal, temp);
+            runningTotal = newTotal;
+            inputNumber = '';
+            operator = operatorButtons[i].textContent;
+        };
+        console.log(`user selected ${operator}`);
+        console.log(`running total is ${runningTotal}`);
+        if (operator === '=') {
+            operatorSelected = false;
+        };
     });
 };
-
-//calculations. Do once operatorSelected is True//
-
 
 //create a concatenated string each time number button is pressed//
 const createInput = ((a,b) => a = a + b);
 
-//convert the string of 'numbers' into an actual number//
-const getNumber = (a => parseFloat(a));
-
 //operator functions//
 const operate = function(operator, a, b) {
     if (operator === '+') {
-        addition(a, b);
+        return addition(a, b);
     } else if (operator === '-') {
-        subtraction(a, b);
+        return subtraction(a, b);
     } else if (operator === 'x') {
-        multiply(a, b);
+        return multiply(a, b);
     } else if (operator === '%') {
-        division(a, b);
+        return division(a,b);
     } else {
-        return 'error';
+        return a;
     };
 };
 
