@@ -9,25 +9,8 @@ let runningTotal = 0
 const numberButtons = document.querySelectorAll('.number-button');
 const operatorButtons = document.querySelectorAll('.operator-button');
 
-<<<<<<< HEAD
-/*This function adds an event listener to any node list passed to it. If the class is operator, then the 
-computer should toggle operatorSelected. If not, computer should create the input number as string by 
-concatenating the values of numbers pressed.
-
-Problems: if user selects another operator, it won't work I don't think. This can only take two numbers*/
-
-function addEvents (nodeList) {
-    for (let i = 0; i < nodeList.length; i++) {
-        nodeList[i].addEventListener('click', () => {
-            let tempNumber = nodeList[i].textContent;
-            !operatorSelected ? firstNumber = createInput(firstNumber, tempNumber) : secondNumber = createInput(secondNumber, tempNumber);
-            console.log(firstNumber);
-            console.log(secondNumber);
-        });
-=======
 //When a number buttons is pressed, concate a string with the text values of each number button.
 //ex: press 1, press 8, press ., press 9 = '18.9'
->>>>>>> calc-sevnums
 
 for (let i = 0; i < numberButtons.length; i++) {
     numberButtons[i].addEventListener('click', () => {
