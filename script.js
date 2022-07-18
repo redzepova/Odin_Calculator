@@ -20,14 +20,21 @@ for (let i = 0; i < numberButtons.length; i++) {
 };
 
 //addEvents(operatorButtons);
+/*
+Add Events
+if operatorSelected is false, it's because we just put in our first number. 
+grab the operator to use later, set our running total, and swith operatorSelected to true.
 
+After that use the operator selected last time to get the right operation, the update the new running total.
+set our input number to 0, and then set the operator to what we hit last time. This means that if I hit +, and
+then I hit - later, the addition is evaluated first, and then set to minus to find the next number.
+*/
 for (let i = 0; i < operatorButtons.length; i++) {
     operatorButtons[i].addEventListener('click', () => {
         if (operatorSelected === false) {
             operator = operatorButtons[i].textContent;
             runningTotal = parseFloat(inputNumber);
             operatorSelected = true;
-            console.log(`runningTotal is ${runningTotal}`);
             inputNumber = "";
         } else {
             let temp = parseFloat(inputNumber)
@@ -36,8 +43,6 @@ for (let i = 0; i < operatorButtons.length; i++) {
             inputNumber = '';
             operator = operatorButtons[i].textContent;
         };
-        console.log(`user selected ${operator}`);
-        console.log(`running total is ${runningTotal}`);
         if (operator === '=') {
             operatorSelected = false;
         };
